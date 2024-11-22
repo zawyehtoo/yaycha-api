@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const prisma = require("../prismaClient");
+const {auth, isOwner} = require("../middlewares/auth")
+
 
 router.get("/posts",async(req,res)=>{
     const {id} = req.params;
@@ -43,7 +45,7 @@ router.get("/posts/:id",async(req,res)=>{
     }
 })
 
-router.delete("/posts/:id",async(req,res)=>{
+router.delete("/posts/:id",auth,isOwner("post"),async(req,res)=>{
     const {id} = req.params;
 
     try{
@@ -61,7 +63,7 @@ router.delete("/posts/:id",async(req,res)=>{
     }
 });
 
-router.delete("/comments/:id",async(req,res)=>{
+router.delete("/comments/:id",auth,isOwner("comment"),async(req,res)=>{
     const {id} = req.params;
 
     try{
