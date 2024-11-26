@@ -23,7 +23,9 @@ router.get("/posts",async(req,res)=>{
     }catch(e){
         res.status(500).json({error:e});
     }
-})
+});
+
+
 
 router.get("/posts/:id",async(req,res)=>{
     const {id} = req.params;

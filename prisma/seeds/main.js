@@ -5,7 +5,7 @@ const {UserSeeder} = require('./UserSeeder');
 const {PostSeeder} = require('./PostSeeder');
 const {CommentSeeder} = require('./CommentSeeder');
 
-async function  mian() {
+async function  main() {
     try{
         await UserSeeder();
         await PostSeeder();
@@ -19,4 +19,4 @@ async function  mian() {
     }
 }
 
-mian();
+main();
